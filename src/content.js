@@ -1,14 +1,18 @@
 const rows = Array.from(document.querySelectorAll('table tbody tr'));
 const data = rows.map(row => {
   const cells = row.querySelectorAll('td');
+  // Helper function to remove commas from a string
+  const removeCommas = (text) => text ? text.replace(/,/g, '') : '';
+
   return {
     fecha: cells[0]?.innerText.trim(),
-    apertura: cells[1]?.innerText.trim(),
-    alto: cells[2]?.innerText.trim(),
-    bajo: cells[3]?.innerText.trim(),
-    cierre: cells[4]?.innerText.trim(),
-    cierreAjustado: cells[5]?.innerText.trim(),
-    volumen: cells[6]?.innerText.trim()
+    // Remove commas from numerical fields
+    apertura: removeCommas(cells[1]?.innerText.trim()),
+    alto: removeCommas(cells[2]?.innerText.trim()),
+    bajo: removeCommas(cells[3]?.innerText.trim()),
+    cierre: removeCommas(cells[4]?.innerText.trim()),
+    cierreAjustado: removeCommas(cells[5]?.innerText.trim()),
+    volumen: removeCommas(cells[6]?.innerText.trim())
   };
 });
 const datosFiltrados = data.filter(row => row.cierre);
