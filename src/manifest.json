@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Yahoo Stocks Data Exporter",
+  "version": "1.0",
+  "description": "A Chrome extension to export stock data from Yahoo pages to CSV.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.yahoo.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon-128.png",
+      "48": "images/icon-128.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon-128.png",
+    "48": "images/icon-128.png",
+    "128": "images/icon-128.png"
+  }
+}
